@@ -11,6 +11,17 @@
         <hash type="sha-256">a7ccbb33de2fddf1bafb718cd2d57b9f7ea0416cd80ccb4cf03bd1ec9080d96b</hash>
         <url>https://git.earthdata.nasa.gov/rest/git-lfs/storage/DAS/sdptoolkit/a7ccbb33de2fddf1bafb718cd2d57b9f7ea0416cd80ccb4cf03bd1ec9080d96b?response-content-disposition=attachment%3B%20filename%3D%22SDPTK5.2.20v1.01.tar.Z%22%3B%20filename*%3Dutf-8%27%27SDPTK5.2.20v1.01.tar.Z</url>
     </file>
+    <file name="images/sdptk/el8/hdf-eos5-2.0-src.tar.gz">
+        <identity>HDF-EOS5</identity>
+        <version>2.0</version>
+        <publisher>
+            <name>HDF-EOS Tools and Information Center</name>
+            <url>https://www.hdfeos.org/</url>
+        </publisher>
+        <size>1198593</size>
+        <hash type="sha-256">d7c34770f0fe09fe5d255d73fd61aadd38278f423b925d1a5800e86aff17c82f</hash>
+        <url>https://git.earthdata.nasa.gov/projects/DAS/repos/hdfeos5/raw/hdf-eos5-2.0-src.tar.gz?at=refs%2Fheads%2FHDFEOS5_2.0</url>
+    </file>
     <file name="images/sdptk/el8/hdf-eos2-3.0-src.tar.gz">
         <identity>HDF-EOS2</identity>
         <version>3.0</version>
@@ -22,6 +33,7 @@
         <hash type="sha-256">3a5564b4d69b541139ff7dfdad948696cf31d9d1a6ea8af290c91a4c0ee37188</hash>
         <url>https://git.earthdata.nasa.gov/projects/DAS/repos/hdfeos/raw/hdf-eos2-3.0-src.tar.gz?at=3128a738021501c821549955f6c78348e5f33850</url>
     </file>
+    <!--
     <file name="images/sdptk/el8/HDF-EOS2.20v1.00.tar.Z">
         <identity>HDF-EOS2</identity>
         <version>2.20v1.00</version>
@@ -29,8 +41,9 @@
             <name>HDF-EOS Tools and Information Center</name>
             <url>https://www.hdfeos.org/</url>
         </publisher>
-        <!-- <size>752290</size> -->
-        <!-- <hash type="sha-256">3a5564b4d69b541139ff7dfdad948696cf31d9d1a6ea8af290c91a4c0ee37188</hash> -->
+        <size>7699996</size>
+        <hash type="sha-256">cb0f900d2732ab01e51284d6c9e90d0e852d61bba9bce3b43af0430ab5414903</hash>
         <url>https://git.earthdata.nasa.gov/rest/git-lfs/storage/DAS/hdfeos/cb0f900d2732ab01e51284d6c9e90d0e852d61bba9bce3b43af0430ab5414903?response-content-disposition=attachment%3B%20filename%3D%22HDF-EOS2.20v1.00.tar.Z%22%3B%20filename*%3Dutf-8%27%27HDF-EOS2.20v1.00.tar.Z</url>
     </file>
+    -->
 </metalink>

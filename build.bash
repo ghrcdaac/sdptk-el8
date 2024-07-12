@@ -49,7 +49,7 @@ do
       # --ulimit ulimit           Ulimit options (default [])
   )
 
-  # docker pull "$fullname" ||:
+  docker pull "$fullname" ||:
   docker build "${build_args[@]}" "$context"
-  # docker push "$fullname"
+  docker push "$fullname"
 done

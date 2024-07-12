@@ -1,6 +1,6 @@
 diff -Naur a/configure b/configure
 --- a/configure	2018-06-21 10:03:01.000000000 -0500
-+++ b/configure	2024-07-11 17:46:02.674992400 -0500
++++ b/configure	2024-07-12 14:54:30.066936600 -0500
 @@ -21507,7 +21507,7 @@
    cat >>confdefs.h <<_ACEOF
  #define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
@@ -19,3 +19,12 @@ diff -Naur a/configure b/configure
  else
    unset HAVE_JPEG
  fi
+@@ -30245,7 +30245,7 @@
+   /* This test makes some buggy mktime implementations loop.
+      Give up after 60 seconds; a mktime slower than that
+      isn't worth using anyway.  */
+-  alarm (60);
++  alarm (1);
+ 
+   for (time_t_max = 1; 0 < time_t_max; time_t_max *= 2)
+     continue;
