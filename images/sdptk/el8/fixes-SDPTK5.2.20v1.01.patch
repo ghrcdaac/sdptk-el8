@@ -1,0 +1,21 @@
+diff -Naur a/configure b/configure
+--- a/configure	2018-06-21 10:03:01.000000000 -0500
++++ b/configure	2024-07-11 17:46:02.674992400 -0500
+@@ -21507,7 +21507,7 @@
+   cat >>confdefs.h <<_ACEOF
+ #define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
+ _ACEOF
+- HAVE_ZLIB_H = "yes"
++ HAVE_ZLIB_H="yes"
+ else
+   unset HAVE_ZLIB
+ fi
+@@ -22259,7 +22259,7 @@
+   cat >>confdefs.h <<_ACEOF
+ #define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
+ _ACEOF
+- HAVE_JPEG_H = "yes"
++ HAVE_JPEG_H="yes"
+ else
+   unset HAVE_JPEG
+ fi
