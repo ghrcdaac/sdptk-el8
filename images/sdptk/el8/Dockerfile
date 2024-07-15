@@ -33,11 +33,12 @@ RUN dnf -q -y install ksh tcsh
 # hdf4 compiler settings
 # RUN echo '#include <df.h>' > dummy.c && h4cc -show dummy.c && rm dummy.c
 ENV HDF4CFLAGS="-I/usr/include/hdf -DBIG_LONGS -DSWAP -I/usr/include/tirpc"
-ENV HDF4LDFLAGS="-L/usr/lib64 -lmfhdf -ldf -ljpeg -lz -ltirpc"
+ENV HDF4LDFLAGS="-L/usr/lib64"
+ENV HDF4LDLIBS="-lmfhdf -ldf -ljpeg -lz -ltirpc"
 # Validate hdf4 environment variables
 RUN echo -e '#include <df.h>\nint main(){HDFopen(0,0,0);}' > /tmp/dummy.c
 RUN set -x; gcc $HDF4CFLAGS -o /tmp/dummy.o -c /tmp/dummy.c
-RUN set -x; gcc -o /tmp/dummy.exe /tmp/dummy.o $HDF4LDFLAGS
+RUN set -x; gcc $HDF4LDFLAGS -o /tmp/dummy.exe /tmp/dummy.o $HDF4LDLIBS
 # RUN ldd /tmp/dummy.exe
 RUN rm /tmp/dummy.*
 
@@ -45,11 +46,12 @@ RUN rm /tmp/dummy.*
 # hdf5 compiler settings
 # RUN echo '#include <hdf5.h>' > dummy.c && h5cc -show dummy.c && rm dummy.c
 ENV HDF5CFLAGS="-I/usr/include"
-ENV HDF5LDFLAGS="-L/usr/lib64 -lhdf5_hl -lhdf5 -lsz -lz -ldl -lm"
+ENV HDF5LDFLAGS="-L/usr/lib64"
+ENV HDF5LDLIBS="-lhdf5_hl -lhdf5 -lsz -lz -ldl -lm"
 # Validate hdf4 environment variables
 RUN echo -e '#include <hdf5.h>\nint main(){H5open();}' > /tmp/dummy.c
 RUN set -x; gcc $HDF5CFLAGS -o /tmp/dummy.o -c /tmp/dummy.c
-RUN set -x; gcc -o /tmp/dummy.exe /tmp/dummy.o $HDF5LDFLAGS
+RUN set -x; gcc $HDF5LDFLAGS -o /tmp/dummy.exe /tmp/dummy.o $HDF5LDLIBS
 # RUN ldd /tmp/dummy.exe
 RUN rm /tmp/dummy.*
 
@@ -81,12 +83,13 @@ ENV HDFEOS2LIB=$HE2INSTALL/lib
 # Compiler settings
 # RUN sed -n -e '/ Configuration Summary/,/^$/p' config.log
 ENV HDFEOS2CFLAGS="$HDF4CFLAGS -I$HDFEOS2INC"
-ENV HDFEOS2LDFLAGS="-L$HDFEOS2LIB -lhdfeos -lGctp -lm $HDF4LDFLAGS"
+ENV HDFEOS2LDFLAGS="-L$HDFEOS2LIB $HDF4LDFLAGS"
+ENV HDFEOS2LDLIBS="-lhdfeos -lGctp -lm $HDF4LDLIBS"
 # Validate hdfeos2 environment variables
 WORKDIR /hdf-eos2-3.0/samples
 # RUN env | sort
 RUN set -x; gcc $HDFEOS2CFLAGS -c -o InquireGrid.o InquireGrid.c
-RUN set -x; gcc -o InquireGrid InquireGrid.o $HDFEOS2LDFLAGS
+RUN set -x; gcc $HDFEOS2LDFLAGS -o InquireGrid InquireGrid.o $HDFEOS2LDLIBS
 # RUN ldd InquireGrid
 # RUN ./InquireGrid
 # Cleanup
@@ -119,12 +122,13 @@ ENV HDFEOS5LIB=$HE5INSTALL/lib
 # Compiler settings
 # RUN sed -n -e '/ Configuration Summary/,/^$/p' config.log
 ENV HDFEOS5CFLAGS="$HDF5CFLAGS -I$HDFEOS5INC"
-ENV HDFEOS5LDFLAGS="-L$HDFEOS5LIB -lhe5_hdfeos -lGctp $HDF5LDFLAGS"
+ENV HDFEOS5LDFLAGS="-L$HDFEOS5LIB $HDF5LDFLAGS"
+ENV HDFEOS5LDLIBS="-lhe5_hdfeos -lGctp $HDF5LDLIBS"
 # Validate hdfeos5 environment variables
 WORKDIR /hdf-eos5-2.0/samples
 # RUN env | sort
 RUN set -x; gcc $HDFEOS5CFLAGS -c -o he5_gd_info.o he5_gd_info.c
-RUN set -x; gcc -o he5_gd_info he5_gd_info.o $HDFEOS5LDFLAGS
+RUN set -x; gcc $HDFEOS5LDFLAGS -o he5_gd_info he5_gd_info.o $HDFEOS5LDLIBS
 # RUN ldd he5_gd_info
 RUN ./he5_gd_info
 # Cleanup
