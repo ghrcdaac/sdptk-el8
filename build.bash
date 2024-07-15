@@ -4,6 +4,7 @@ set -euo pipefail
 [[ "${TRACE-0}" == "1" ]] && set -x
 
 
+: ${SHOULD_PULL:=false} ${SHOULD_PUSH:=false}
 IMAGE_SOURCE=${IMAGE_SOURCE:-'https://github.com/ghrcdaac/sdptk-el8'}
 IMAGE_PREFIX=${IMAGE_PREFIX:-ghcr.io/ghrcdaac}
 IMAGES=(
@@ -49,7 +50,7 @@ do
       # --ulimit ulimit           Ulimit options (default [])
   )
 
-  docker pull "$fullname" ||:
+  $SHOULD_PULL && docker pull "$fullname" ||:
   docker build "${build_args[@]}" "$context"
-  docker push "$fullname"
+  $SHOULD_PUSH && docker push "$fullname"
 done
